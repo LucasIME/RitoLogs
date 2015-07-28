@@ -87,8 +87,6 @@ class Ui_Form(QWidget):
         mapa = Parser.getSortedPlayerChampPairVector(summonerName)
         resultString = ""
         resultString = resultString.join( [ x[0] + ": " +  str(x[1]) + "\n" for x in mapa ] )
-        #for x in mapa:
-        #    resultString += x[0] + ": " +  str(x[1]) + "\n"
         self.resultDisplay.setText(resultString)
 
 if __name__ == '__main__':
