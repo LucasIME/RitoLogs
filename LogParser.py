@@ -11,7 +11,7 @@ class logParser():
         for filename in os.listdir(self.filepath):
             file = open(self.filepath +"\\"+ filename, 'r', encoding="cp852")
             data = file.readline()
-            counter = 0
+            playerCounter = 0
             while data != '':
                 if "created for " + summonerName in data:
                     champPlayed = re.split("(.*Hero )(.*)(\(.*created for )(.*)", data)[2]
@@ -23,8 +23,8 @@ class logParser():
                         champMap["Total"] = 1
                     else:
                         champMap["Total"] += 1
-                    counter +=1
-                if counter >= 10:
+                    playerCounter +=1
+                if playerCounter >= 10:
                     break
                 data = file.readline()
         return champMap
@@ -39,7 +39,7 @@ class logParser():
         for filename in os.listdir(self.filepath):
             file = open(self.filepath +"\\"+ filename, 'r', encoding="cp852")
             data = file.readline()
-            counter = 0
+            playerCounter = 0
             while data != '':
                 if "created for " in data:
                     summonerName = re.split("(.*Hero )(.*)(\(.*created for )(.*)", data)[4]
@@ -52,8 +52,8 @@ class logParser():
                         playersMap[summonerName][champPlayed] = 1
                     else:
                         playersMap[summonerName][champPlayed]+=1
-                    counter +=1
-                if counter >= 10:
+                    playerCounter +=1
+                if playerCounter >= 10:
                     break
                 data = file.readline()
         return playersMap
